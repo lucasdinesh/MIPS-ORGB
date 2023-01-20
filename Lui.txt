@@ -1,0 +1,5 @@
+Texto para o relatorio
+Monociclo:
+O lui para o monociclo foi implementado utilizando um bit extender,um bit shifter,um mux e um
+bit de controle, o extender transforma os 16 bits do imediato em 32,e então os seus bits são shiftados 16 vezes para
+a esquerda e o resultado entra em um mux com a saida do mux da memoria de dados
