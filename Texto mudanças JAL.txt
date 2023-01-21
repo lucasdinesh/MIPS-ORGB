@@ -1,0 +1,6 @@
+MONOCICLO:	
+Para implementar o Jump and Link(JAL) foi necessario adicionar um fio que leva pc+4 até o 
+write data do banco de registradores, uma flag de controle do JAL, um MUX e modificar o mux que lida
+com a entrada Write Register.
+Com a flag ativa o MUX da entrada write register deixa entrar o valor 1f(registrador de retorno) e o MUX
+da entrada write data seleciona o pc+4 no lugar da saida do MUX da memoria de dados.
