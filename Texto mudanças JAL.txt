@@ -4,3 +4,15 @@ write data do banco de registradores, uma flag de controle do JAL, um MUX e modi
 com a entrada Write Register.
 Com a flag ativa o MUX da entrada write register deixa entrar o valor 1f(registrador de retorno) e o MUX
 da entrada write data seleciona o pc+4 no lugar da saida do MUX da memoria de dados.
+
+MULTICICLO:
+Para implementar o Jump and Link(JAL) foi necessario adicionar um somador que soma PC+4,uma flag de controle do JAL,
+dois MUX,um que faz a entrada Write Address ser 1f(registrador de retorno) quando JAL=1 e outro que faz 
+a entrada WriteData ser PC+4 quando JAL = 1.
+Alem de modificar o bloco de controle criando um estado(b) onde JAL=1;RegWrite=1;PCSource = 10 e PCWrite = 1, usando
+esse estado novo para criar a sequencia de estado da instrução JAL(linha 030) (1 b 0 0 0 0 0 0)
+
+Mudanças na maquina de estado:
+1(ID) --op=JAL--> (JAL=1;PCWRITE;RegWrite=1;PCSource=10) ---> fim
+
+PIPELINE:
