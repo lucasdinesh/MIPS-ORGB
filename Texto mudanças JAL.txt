@@ -16,3 +16,5 @@ Mudanças na maquina de estado:
 1(ID) --op=JAL--> (JAL=1;PCWRITE;RegWrite=1;PCSource=10) ---> fim
 
 PIPELINE:
+Para implementar o Jump and Link(JAL) foi necessario adicionar uma flag de controle do JAL,dois MUX,um registrador
+ para a flag,usando os bits de controle jump e o regwrite
