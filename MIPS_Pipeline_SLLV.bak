@@ -47,7 +47,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="valign" val="base"/>
     </tool>
   </lib>
-  <main name="Instruction Register"/>
+  <main name="MIPS_Pipeline"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
     <a name="simlimit" val="1000"/>
@@ -79,6 +79,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <tool lib="1" name="NOT Gate"/>
     <tool lib="1" name="AND Gate"/>
     <tool lib="1" name="OR Gate"/>
+    <tool name="BLTZAL_6-1"/>
   </toolbar>
   <circuit name="Instruction Register">
     <a name="circuit" val="Instruction Register"/>
@@ -3857,7 +3858,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="4" loc="(740,510)" name="Register">
       <a name="width" val="1"/>
     </comp>
-    <comp loc="(310,910)" name="JAL_6-1"/>
     <comp loc="(300,550)" name="Instruction Register"/>
     <comp lib="0" loc="(710,770)" name="Constant"/>
     <comp lib="0" loc="(190,610)" name="Constant"/>
@@ -4130,6 +4130,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="facing" val="east"/>
       <a name="label" val="Clock"/>
     </comp>
+    <comp loc="(310,910)" name="BLTZAL_6-1"/>
     <comp lib="5" loc="(826,727)" name="Text">
       <a name="text" val=":"/>
       <a name="font" val="SansSerif bold 40"/>
@@ -4308,6 +4309,50 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="inputs" val="6"/>
     </comp>
   </circuit>
+  <circuit name="BLTZAL_6-1">
+    <a name="circuit" val="BLTZAL_6-1"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <wire from="(560,420)" to="(600,420)"/>
+    <wire from="(560,430)" to="(560,440)"/>
+    <wire from="(710,410)" to="(750,410)"/>
+    <wire from="(480,410)" to="(540,410)"/>
+    <wire from="(610,410)" to="(610,420)"/>
+    <wire from="(600,420)" to="(600,430)"/>
+    <wire from="(560,400)" to="(610,400)"/>
+    <wire from="(560,410)" to="(610,410)"/>
+    <wire from="(560,440)" to="(610,440)"/>
+    <wire from="(560,380)" to="(640,380)"/>
+    <wire from="(560,390)" to="(640,390)"/>
+    <wire from="(600,430)" to="(610,430)"/>
+    <comp lib="1" loc="(640,420)" name="NOT Gate"/>
+    <comp lib="1" loc="(710,410)" name="AND Gate">
+      <a name="size" val="70"/>
+      <a name="inputs" val="6"/>
+    </comp>
+    <comp lib="0" loc="(480,410)" name="Pin">
+      <a name="width" val="6"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="JAL_INPUT"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="1" loc="(640,440)" name="NOT Gate"/>
+    <comp lib="0" loc="(750,410)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Its_JAL"/>
+      <a name="labelloc" val="east"/>
+    </comp>
+    <comp lib="1" loc="(640,400)" name="NOT Gate"/>
+    <comp lib="1" loc="(640,430)" name="NOT Gate"/>
+    <comp lib="0" loc="(540,410)" name="Splitter">
+      <a name="fanout" val="6"/>
+      <a name="incoming" val="6"/>
+      <a name="appear" val="legacy"/>
+    </comp>
+  </circuit>
   <circuit name="BLTZAL">
     <a name="circuit" val="BLTZAL"/>
     <a name="clabel" val=""/>
@@ -4474,49 +4519,5 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="negate4" val="true"/>
       <a name="negate5" val="true"/>
     </comp>
-  </circuit>
-  <circuit name="JAL_6-1">
-    <a name="circuit" val="JAL_6-1"/>
-    <a name="clabel" val=""/>
-    <a name="clabelup" val="east"/>
-    <a name="clabelfont" val="SansSerif plain 12"/>
-    <wire from="(560,420)" to="(600,420)"/>
-    <wire from="(560,430)" to="(560,440)"/>
-    <wire from="(710,410)" to="(750,410)"/>
-    <wire from="(480,410)" to="(540,410)"/>
-    <wire from="(610,410)" to="(610,420)"/>
-    <wire from="(600,420)" to="(600,430)"/>
-    <wire from="(560,400)" to="(610,400)"/>
-    <wire from="(560,410)" to="(610,410)"/>
-    <wire from="(560,440)" to="(610,440)"/>
-    <wire from="(560,380)" to="(640,380)"/>
-    <wire from="(560,390)" to="(640,390)"/>
-    <wire from="(600,430)" to="(610,430)"/>
-    <comp lib="0" loc="(750,410)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Its_JAL"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="0" loc="(540,410)" name="Splitter">
-      <a name="fanout" val="6"/>
-      <a name="incoming" val="6"/>
-      <a name="appear" val="legacy"/>
-    </comp>
-    <comp lib="1" loc="(640,430)" name="NOT Gate"/>
-    <comp lib="1" loc="(640,400)" name="NOT Gate"/>
-    <comp lib="1" loc="(710,410)" name="AND Gate">
-      <a name="size" val="70"/>
-      <a name="inputs" val="6"/>
-    </comp>
-    <comp lib="0" loc="(480,410)" name="Pin">
-      <a name="width" val="6"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="JAL_INPUT"/>
-      <a name="labelloc" val="east"/>
-    </comp>
-    <comp lib="1" loc="(640,440)" name="NOT Gate"/>
-    <comp lib="1" loc="(640,420)" name="NOT Gate"/>
   </circuit>
 </project>
