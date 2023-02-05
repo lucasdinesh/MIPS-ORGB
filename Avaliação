@@ -1,0 +1,6 @@
+Avaliação do Professor
+
+Relatório menciona a implementação das instruções: "ORI, JAL, INSTRUÇÃO DO ARTHUR E INSTRUÇÃO DO TIAGO".
+Instrução SLLV está implementada invertida: a especificação determina que RT é shiftado uma quantidade de bits determinada por RS.
+No monociclo e pipeline, a instrução BLTZAL foi implementada como BGTZAL (testando se o registrador é maior que zero). 
+A instrução não foi implementada no multiciclo.
